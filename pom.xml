@@ -27,7 +27,7 @@
 
     <application.server>tomcat-7.0</application.server>
     <message.broker>activemq-5.12</message.broker>
-    <citrus.host.name>192.168.99.1</citrus.host.name>
+    <citrus.host.name>localhost</citrus.host.name>
     <docker.host.name>dockerhost</docker.host.name>
   </properties>
 
