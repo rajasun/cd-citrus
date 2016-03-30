@@ -51,7 +51,7 @@ public class PlaceBulkOrderIT extends TestNGCitrusTestDesigner {
 
     @CitrusTest
     public void placeBulkCookieOrder() {
-        variable("orderType", "chocolate");
+        variable("orderType", "caramel");
         variable("orderId", Functions.randomNumber(10L));
         variable("amount", 1001L);
 
