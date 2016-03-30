@@ -51,7 +51,7 @@ public class PlaceOrdersJmsIT extends TestNGCitrusTestDesigner {
 
         send(bakeryOrderEndpoint)
             .payload("<order>" +
-                        "<type>chocolate</type>" +
+                        "<type>caramel</type>" +
                         "<id>${orderId}</id>" +
                         "<amount>${amount}</amount>" +
                     "</order>");
