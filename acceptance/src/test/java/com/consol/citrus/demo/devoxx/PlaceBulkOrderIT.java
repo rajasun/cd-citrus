@@ -64,18 +64,21 @@ public class PlaceBulkOrderIT extends TestNGCitrusTestDesigner {
                             "<amount>${amount}</amount>" +
                         "</order>");
 
-        echo("Receive report mail for 1000+ order");
+        echo("Waiting to Receive report mail for 1000+ order");
 
         receive(mailServer)
                 .payload(new ClassPathResource("templates/mail.xml"))
                 .header(CitrusMailMessageHeaders.MAIL_SUBJECT, "Congratulations!")
                 .header(CitrusMailMessageHeaders.MAIL_FROM, "cookie-report@example.com")
-                .header(CitrusMailMessageHeaders.MAIL_TO, "stakeholders@example.com");
+                .header(CitrusMailMessageHeaders.MAIL_TO, "stakeholders@example.com")
+                .timeout(15000L);
 
+        echo("Received report email with 1000+ order");
+        /*
         send(mailServer)
                 .payload(new ClassPathResource("templates/mail_response.xml"));
-
         echo("Receive report with 1000+ order");
+		*/
 
         http().client(reportingClient)
                 .get("/reporting/json");
