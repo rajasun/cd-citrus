@@ -43,6 +43,7 @@ public class ReportService implements InitializingBean {
      * @return
      */
     public boolean status(String id) {
+    	System.out.println("Querying Order " + id);
         return produced.contains(id);
     }
 
@@ -53,6 +54,7 @@ public class ReportService implements InitializingBean {
      * @param amount
      */
     public void add(String id, String type, Integer amount) throws Exception {
+    	System.out.println("Addding Order " + id);
         produced.add(id);
 
         if (report.containsKey(type)) {
