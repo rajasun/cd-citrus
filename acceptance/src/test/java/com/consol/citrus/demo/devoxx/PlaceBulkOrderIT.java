@@ -51,7 +51,7 @@ public class PlaceBulkOrderIT extends TestNGCitrusTestDesigner {
 
     @CitrusTest
     public void placeBulkCookieOrder() {
-        variable("orderType", "caramel");
+        variable("orderType", "chocolate");
         variable("orderId", Functions.randomNumber(10L));
         variable("amount", 1001L);
 
@@ -72,13 +72,9 @@ public class PlaceBulkOrderIT extends TestNGCitrusTestDesigner {
                 .header(CitrusMailMessageHeaders.MAIL_FROM, "cookie-report@example.com")
                 .header(CitrusMailMessageHeaders.MAIL_TO, "stakeholders@example.com")
                 .timeout(15000L);
-
-        echo("Received report email with 1000+ order");
-        /*
         send(mailServer)
                 .payload(new ClassPathResource("templates/mail_response.xml"));
-        echo("Receive report with 1000+ order");
-		*/
+        echo("Received report email with 1000+ order");
 
         http().client(reportingClient)
                 .get("/reporting/json");
