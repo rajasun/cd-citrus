@@ -43,7 +43,7 @@ public class ReportService implements InitializingBean {
      * @return
      */
     public boolean status(String id) {
-    	System.out.println("Querying Order " + id);
+    	System.out.println("Querying Order " + id + " Status: " + produced.contains(id));
         return produced.contains(id);
     }
 
