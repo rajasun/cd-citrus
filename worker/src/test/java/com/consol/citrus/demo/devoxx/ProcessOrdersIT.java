@@ -44,6 +44,12 @@ public class ProcessOrdersIT extends TestNGCitrusTestDesigner {
     @CitrusTest
     public void processOrderWithReporting() {
         variable("orderId", Functions.randomNumber(10L));
+        http().server(reportingServer)
+        .put("/report/services/reporting")
+            .header("id", "${orderId}")
+            .header("name", "chocolate")
+            .header("amount", "1")
+            .timeout(10000L);
 
         send(factoryOrderEndpoint)
             .payload("<order>" +
@@ -51,13 +57,6 @@ public class ProcessOrdersIT extends TestNGCitrusTestDesigner {
                         "<id>${orderId}</id>" +
                         "<amount>1</amount>" +
                     "</order>");
-
-        http().server(reportingServer)
-            .put("/report/services/reporting")
-                .header("id", "${orderId}")
-                .header("name", "chocolate")
-                .header("amount", "1")
-                .timeout(10000L);
 
         http().server(reportingServer)
             .respond(HttpStatus.OK);
