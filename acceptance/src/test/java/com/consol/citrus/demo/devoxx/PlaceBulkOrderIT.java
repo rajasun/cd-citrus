@@ -78,8 +78,6 @@ public class PlaceBulkOrderIT extends TestNGCitrusTestDesigner {
 
         http().client(reportingClient)
                 .get("/reporting/json");
-
-        http().client(reportingClient)
                 .response(HttpStatus.OK)
                 .messageType(MessageType.JSON)
                 .payload("{\"caramel\": \"@ignore@\",\"blueberry\": \"@ignore@\",\"chocolate\": \"@greaterThan(1000)@\"}");
